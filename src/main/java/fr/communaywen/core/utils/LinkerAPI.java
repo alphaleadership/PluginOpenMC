@@ -1,6 +1,7 @@
 package fr.communaywen.core.utils;
 
 import fr.communaywen.core.utils.database.DatabaseManager;
+import java.security.SecureRandom;
 import org.bukkit.entity.Player;
 
 import java.sql.Connection;
@@ -161,7 +162,7 @@ public class LinkerAPI {
     }
 
     public int generateCode() {
-        return new Random().nextInt(9000) + 1000;
+        return new SecureRandom().nextInt(9000) + 1000;
     }
 
 }

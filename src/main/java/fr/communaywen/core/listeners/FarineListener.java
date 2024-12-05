@@ -1,5 +1,6 @@
 package fr.communaywen.core.listeners;
 
+import java.security.SecureRandom;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,7 +22,7 @@ public class FarineListener implements Listener {
 
                 Player player = event.getPlayer();
 
-                Random rand = new Random();
+                Random rand = new SecureRandom();
                 int chance = rand.nextInt(100) + 1;
 
 

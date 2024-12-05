@@ -2,6 +2,7 @@ package fr.communaywen.core;
 
 import fr.communaywen.core.credit.Credit;
 import fr.communaywen.core.credit.Feature;
+import java.security.SecureRandom;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -81,7 +82,7 @@ public class QuizManager {
 
         if (!event.getMessage().toLowerCase().equals(currentQuiz.answer)) return;
 
-        int money = new Random().nextInt(config.getInt("rewards.money.min"), config.getInt("rewards.money.max"));
+        int money = new SecureRandom().nextInt(config.getInt("rewards.money.min"), config.getInt("rewards.money.max"));
 
         Bukkit.broadcastMessage(
                 "§8§m                                                     §r\n" +
@@ -102,23 +103,23 @@ public class QuizManager {
     }
 
     public Quiz getRandomQuiz() {
-        boolean isPredefinedQuiz = new Random().nextInt(3) < 2;
+        boolean isPredefinedQuiz = new SecureRandom().nextInt(3) < 2;
 
         if (isPredefinedQuiz) {
-            int index = new Random().nextInt(this.quizzes.size());
+            int index = new SecureRandom().nextInt(this.quizzes.size());
 
             return this.quizzes.get(index);
         } else {
-            int type = new Random().nextInt(4);
-            int a = new Random().nextInt(1, 10);
+            int type = new SecureRandom().nextInt(4);
+            int a = new SecureRandom().nextInt(1, 10);
 
             return switch (type) {
                 case 0 -> {
-                    int b = new Random().nextInt(1, 10);
+                    int b = new SecureRandom().nextInt(1, 10);
                     yield new Quiz(MessageFormat.format("Combien font {0} + {1} ?", a, b), String.valueOf(a + b));
                 }
                 case 1 -> {
-                    int b = new Random().nextInt(1, 10);
+                    int b = new SecureRandom().nextInt(1, 10);
                     yield new Quiz(MessageFormat.format("Combien font {0} * {1} ?", a, b), String.valueOf(a * b));
                 }
                 case 2 ->

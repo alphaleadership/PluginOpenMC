@@ -1,5 +1,6 @@
 package fr.communaywen.core;
 
+import java.security.SecureRandom;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.EntityEffect;
@@ -96,7 +97,7 @@ public class EventsManager implements Listener {
                 World overworld = Bukkit.getWorlds().get(0);
 
                 // every midnight: 1/4 chance but not twice in a row
-                if (18000 <= overworld.getTime() && overworld.getTime() < 18100 && System.currentTimeMillis() - lastTerrifyingNight > 20*61000 && new Random().nextFloat() <= terrifyingNightProbability) {
+                if (18000 <= overworld.getTime() && overworld.getTime() < 18100 && System.currentTimeMillis() - lastTerrifyingNight > 20*61000 && new SecureRandom().nextFloat() <= terrifyingNightProbability) {
 
                     lastTerrifyingNight = System.currentTimeMillis();
 
@@ -155,7 +156,7 @@ public class EventsManager implements Listener {
 
                         // ensure there is at least 8 boosted monsters in chunk (can fail)
                         for (int i = monsterCounter ; i < 9 ; i++) {
-                            Random rand = new Random();
+                            Random rand = new SecureRandom();
                             monsteInt = rand.nextInt(3);
                             if (monsteInt == 0) {
                                 monsterType = EntityType.ZOMBIE;
@@ -324,7 +325,7 @@ public class EventsManager implements Listener {
 
                 if (entity.getMetadata("terrifyingNightTime").get(0).asLong() + terrifyingNightDurationMillis > System.currentTimeMillis()) {
                     
-                    Random random = new Random();
+                    Random random = new SecureRandom();
                     float randomFloat = random.nextFloat();
 
                     final ItemStack item;

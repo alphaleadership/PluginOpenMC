@@ -1,5 +1,6 @@
 package fr.communaywen.core.commands;
 
+import java.security.SecureRandom;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -99,7 +100,7 @@ public final class ExplodeRandomCommand {
                 }
             }
 
-            int random = new Random().nextInt(players.size());
+            int random = new SecureRandom().nextInt(players.size());
 
             Player chosenPlayer = players.get(random);
             chosenPlayer.sendMessage("Tu as été désigné.");
