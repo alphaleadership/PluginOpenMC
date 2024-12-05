@@ -2,6 +2,7 @@ package fr.communaywen.core.listeners;
 
 import fr.communaywen.core.credit.Credit;
 import fr.communaywen.core.credit.Feature;
+import java.security.SecureRandom;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -40,7 +41,7 @@ public class Insomnia implements Listener {
                 return;
             }
             for (Player player : playersWhoSlept) {
-                random = new Random();
+                random = new SecureRandom();
                 if (random.nextDouble() <= 0.1) {
                     System.out.println("Giving insomnia to " + player.getName());
                     player.sendMessage("Tu as fait une insomnie!");

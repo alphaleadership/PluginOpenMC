@@ -4,6 +4,7 @@ import dev.lone.itemsadder.api.CustomStack;
 import fr.communaywen.core.AywenCraftPlugin;
 import fr.communaywen.core.credit.Credit;
 import fr.communaywen.core.credit.Feature;
+import java.security.SecureRandom;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -85,10 +86,10 @@ public class PasFraisListener implements Listener {
             name = item.getType().name().toLowerCase();
         }
 
-        Random random = new Random();
+        Random random = new SecureRandom();
         if ((isFresh(name)) && (random.nextDouble() <= 0.1)) {
             player.sendMessage("§2Beuuurk, c'était pas frais !");
-            new RepeatedProut(player).runTaskTimer(this.plugin, 0L, (new Random().nextInt(10) + 1) * 20L);
+            new RepeatedProut(player).runTaskTimer(this.plugin, 0L, (new SecureRandom().nextInt(10) + 1) * 20L);
         }
     }
 }
